@@ -55,8 +55,8 @@ function onStartButtonClick() {
             log('Getting Characteristic...');
             var weight = service.getCharacteristic(characteristicWeight);
             var age = service.getCharacteristic(characteristicAge);
-            return {characteristicWeight: weight, characteristicAge: age};
-            //return {weight,age};
+            //return {characteristicWeight: weight, characteristicAge: age};
+            return weight;
         })
         .then(characteristic => {
             myCharacteristic = characteristic;
@@ -64,8 +64,8 @@ function onStartButtonClick() {
                 log('> Notifications started');
                 myCharacteristic.addEventListener('characteristicvaluechanged',
                     handleWeightNotifications);
-                myCharacteristic.addEventListener('characteristicvaluechanged',
-                    handleAgeNotifications);
+                // myCharacteristic.addEventListener('characteristicvaluechanged',
+                //     handleAgeNotifications);
             });
 
             // var p2 = myCharacteristic.startNotifications().then(_ => {
@@ -87,8 +87,8 @@ function onStopButtonClick() {
                 myCharacteristic.removeEventListener('characteristicvaluechanged',
                     handleWeightNotifications);
 
-                myCharacteristic.removeEventListener('characteristicvaluechanged',
-                    handleAgeNotifications);
+                // myCharacteristic.removeEventListener('characteristicvaluechanged',
+                //     handleAgeNotifications);
             })
             .catch(error => {
                 log('Argh! ' + error);
@@ -97,7 +97,7 @@ function onStopButtonClick() {
 }
 
 function handleWeightNotifications(event) {
-    let value = event.target.value[characteristicWeight];
+    let value = event.target.value;
     /*   let b = value.getUint8(0).toString();
 
        // now do stuff with the data received !
