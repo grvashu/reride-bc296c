@@ -20,14 +20,14 @@ function initGauge() {
         value: 0,
         min: 0,
         max: 255,
-        title: "Weight"
+        title: "weight"
     });
     gauge_a = new JustGage({
         id: "gauge_a",
         value: 0,
         min: 0,
         max: 255,
-        title: "Age"
+        title: "age"
     });
 }
 
@@ -55,12 +55,12 @@ function onStartButtonClick() {
             log('Getting Characteristic...');
             var weight = service.getCharacteristic(characteristicWeight);
             var age = service.getCharacteristic(characteristicAge);
-            //return { "weight": weight, "age": age };
-            return age;
+            return { "weight": weight, "age": age };
+            //return {weight,age};
         })
         .then(characteristic => {
             myCharacteristic = characteristic;
-            var p1 = myCharacteristic.startNotifications()
+            myCharacteristic.startNotifications()
             .then(_ => {
                 log('> Notifications started');
                 myCharacteristic.addEventListener('characteristicweightchanged',
@@ -99,7 +99,7 @@ function onStopButtonClick() {
 }
 
 function handleWeightNotifications(event) {
-    let value = event.target.value;
+    let value = event.target.value["weight"];
     /*   let b = value.getUint8(0).toString();
 
        // now do stuff with the data received !
@@ -111,7 +111,7 @@ function handleWeightNotifications(event) {
 }
 
 function handleAgeNotifications(event) {
-    let value = event.target.value;
+    let value = event.target.value["age"];
     /*   let b = value.getUint8(0).toString();
 
        // now do stuff with the data received !
