@@ -55,7 +55,7 @@ function onStartButtonClick() {
             log('Getting Characteristic...');
             var weight = service.getCharacteristic(characteristicWeight);
             var age = service.getCharacteristic(characteristicAge);
-            return { "weight": weight, "age": age };
+            return {characteristicWeight: weight, characteristicAge: age};
             //return {weight,age};
         })
         .then(characteristic => {
@@ -63,9 +63,9 @@ function onStartButtonClick() {
             myCharacteristic.startNotifications()
             .then(_ => {
                 log('> Notifications started');
-                myCharacteristic.addEventListener('characteristicvaluechanged',
+                myCharacteristic.addEventListener('characcharacteristicweightchanged',
                     handleWeightNotifications);
-                myCharacteristic.addEventListener('characteristicvaluechanged',
+                myCharacteristic.addEventListener('characcharacteristicagechanged',
                     handleAgeNotifications);
             });
 
