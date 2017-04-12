@@ -60,7 +60,7 @@ function onStartButtonClick() {
         })
         .then(characteristic => {
             myCharacteristic = characteristic;
-            return myCharacteristic.startNotifications().then(_ => {
+            myCharacteristic.startNotifications().then(_ => {
                 log('> Notifications started');
                 myCharacteristic.addEventListener('characteristicweightchanged',
                     handleWeightNotifications);
