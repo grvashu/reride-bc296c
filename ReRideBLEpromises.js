@@ -66,11 +66,11 @@ function onStartButtonClick() {
                     handleWeightNotifications);
             });
 
-            var p2 = myCharacteristic.startNotifications().then(_ => {
-                log('> Notifications started');
-                myCharacteristic.addEventListener('characteristicagechanged',
-                    handleAgeNotifications);
-            });
+            // var p2 = myCharacteristic.startNotifications().then(_ => {
+            //     log('> Notifications started');
+            //     myCharacteristic.addEventListener('characteristicagechanged',
+            //         handleAgeNotifications);
+            // });
 
         })
         .catch(error => {
