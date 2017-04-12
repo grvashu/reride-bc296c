@@ -55,12 +55,12 @@ function onStartButtonClick() {
             log('Getting Characteristic...');
             var weight = service.getCharacteristic(characteristicWeight);
             var age = service.getCharacteristic(characteristicAge);
-            //return {characteristicWeight: weight, characteristicAge: age};
-            return weight;
+            return [weight, age];
+            //return weight;
         })
         .then(characteristic => {
             myCharacteristic = characteristic;
-            return myCharacteristic.startNotifications().then(_ => {
+            var p1 = myCharacteristic.startNotifications().then(_ => {
                 log('> Notifications started');
                 myCharacteristic.addEventListener('characteristicvaluechanged',
                     handleWeightNotifications);
@@ -68,11 +68,12 @@ function onStartButtonClick() {
                 //     handleAgeNotifications);
             });
 
-            // var p2 = myCharacteristic.startNotifications().then(_ => {
-            //     log('> Notifications started');
-            //     myCharacteristic.addEventListener('characteristicagechanged',
-            //         handleAgeNotifications);
-            // });
+            var p2 = myCharacteristic.startNotifications().then(_ => {
+                log('> Notifications started');
+                myCharacteristic.addEventListener('characteristicvaluechanged',
+                    handleAgeNotifications);
+            });
+            return [p1,p2];
 
         })
         .catch(error => {
@@ -87,8 +88,8 @@ function onStopButtonClick() {
                 myCharacteristic.removeEventListener('characteristicvaluechanged',
                     handleWeightNotifications);
 
-                // myCharacteristic.removeEventListener('characteristicvaluechanged',
-                //     handleAgeNotifications);
+                myCharacteristic.removeEventListener('characteristicvaluechanged',
+                    handleAgeNotifications);
             })
             .catch(error => {
                 log('Argh! ' + error);
@@ -97,7 +98,7 @@ function onStopButtonClick() {
 }
 
 function handleWeightNotifications(event) {
-    let value = event.target.value;
+    let value = event.target.value[0];
     /*   let b = value.getUint8(0).toString();
 
        // now do stuff with the data received !
@@ -109,7 +110,7 @@ function handleWeightNotifications(event) {
 }
 
 function handleAgeNotifications(event) {
-    let value = event.target.value[characteristicAge];
+    let value = event.target.value[1];
     /*   let b = value.getUint8(0).toString();
 
        // now do stuff with the data received !
