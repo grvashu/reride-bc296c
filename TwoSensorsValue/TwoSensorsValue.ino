@@ -33,8 +33,8 @@ void loop()
  
     Serial.println(central.address());
 
-    sensorOne = analogRead(3);
-    sensorTwo = analogRead(5);
+    sensorOne = analogRead(0);
+    sensorTwo = analogRead(1);
   /*  test = String("Time :" , millis());
     test1 = String("Sensor 1 :" , currentState);
     test2 = String("Sensor 2 :" , fakeSensorValue);*/
