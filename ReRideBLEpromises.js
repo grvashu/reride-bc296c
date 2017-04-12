@@ -63,14 +63,14 @@ function onStartButtonClick() {
             .then(_ => {
                 log('> Notifications started');
                 myCharacteristic.addEventListener('characteristicweightchanged',
-                    handleWeightNotifications);
+                    handleNotifications);
             });
 
-            // var p2 = myCharacteristic.startNotifications().then(_ => {
-            //     log('> Notifications started');
-            //     myCharacteristic.addEventListener('characteristicagechanged',
-            //         handleAgeNotifications);
-            // });
+            var p2 = myCharacteristic.startNotifications().then(_ => {
+                log('> Notifications started');
+                myCharacteristic.addEventListener('characteristicagechanged',
+                    handleNotifications);
+            });
 
         })
         .catch(error => {
