@@ -63,9 +63,9 @@ function onStartButtonClick() {
             myCharacteristic.startNotifications()
             .then(_ => {
                 log('> Notifications started');
-                myCharacteristic.addEventListener('characteristicweightchanged',
+                myCharacteristic.addEventListener('characteristicvaluechanged',
                     handleWeightNotifications);
-                myCharacteristic.addEventListener('characteristicagechanged',
+                myCharacteristic.addEventListener('characteristicvaluechanged',
                     handleAgeNotifications);
             });
 
@@ -99,7 +99,7 @@ function onStopButtonClick() {
 }
 
 function handleWeightNotifications(event) {
-    let value = event.target.value["weight"];
+    let value = event.target.value['weight'];
     /*   let b = value.getUint8(0).toString();
 
        // now do stuff with the data received !
@@ -111,7 +111,7 @@ function handleWeightNotifications(event) {
 }
 
 function handleAgeNotifications(event) {
-    let value = event.target.value["age"];
+    let value = event.target.value['age'];
     /*   let b = value.getUint8(0).toString();
 
        // now do stuff with the data received !
