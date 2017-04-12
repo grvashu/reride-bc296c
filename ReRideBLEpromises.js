@@ -58,23 +58,23 @@ function onStartButtonClick() {
             return {characteristicWeight: weight, characteristicAge: age};
             //return {weight,age};
         })
-        .then(characteristic => {
-            myCharacteristic = characteristic;
-            return myCharacteristic.startNotifications().then(_ => {
-                log('> Notifications started');
-                myCharacteristic.addEventListener('characteristicvaluechanged',
-                    handleWeightNotifications);
-                myCharacteristic.addEventListener('characteristicvaluechanged',
-                    handleAgeNotifications);
-            });
-
-            // var p2 = myCharacteristic.startNotifications().then(_ => {
-            //     log('> Notifications started');
-            //     myCharacteristic.addEventListener('characteristicagechanged',
-            //         handleAgeNotifications);
-            // });
-
-        })
+        // .then(characteristic => {
+        //     myCharacteristic = characteristic;
+        //     return myCharacteristic.startNotifications().then(_ => {
+        //         log('> Notifications started');
+        //         myCharacteristic.addEventListener('characteristicvaluechanged',
+        //             handleWeightNotifications);
+        //         myCharacteristic.addEventListener('characteristicvaluechanged',
+        //             handleAgeNotifications);
+        //     });
+        //
+        //     // var p2 = myCharacteristic.startNotifications().then(_ => {
+        //     //     log('> Notifications started');
+        //     //     myCharacteristic.addEventListener('characteristicagechanged',
+        //     //         handleAgeNotifications);
+        //     // });
+        //
+        // })
         .catch(error => {
             log('Argh! ' + error);
         });
