@@ -62,10 +62,10 @@ function onStartButtonClick() {
             myCharacteristic = characteristic;
             return myCharacteristic.startNotifications().then(_ => {
                 log('> Notifications started');
-                // myCharacteristic.addEventListener('characteristicvaluechanged',
-                //     handleWeightNotifications);
                 myCharacteristic.addEventListener('characteristicvaluechanged',
-                    handleAgeNotifications);
+                    handleWeightNotifications);
+                // myCharacteristic.addEventListener('characteristicvaluechanged',
+                //     handleAgeNotifications);
             });
 
             // var p2 = myCharacteristic.startNotifications().then(_ => {
@@ -88,8 +88,8 @@ function onStopButtonClick() {
                 myCharacteristic.removeEventListener('characteristicvaluechanged',
                     handleWeightNotifications);
 
-                myCharacteristic.removeEventListener('characteristicvaluechanged',
-                    handleAgeNotifications);
+                // myCharacteristic.removeEventListener('characteristicvaluechanged',
+                //     handleAgeNotifications);
             })
             .catch(error => {
                 log('Argh! ' + error);
