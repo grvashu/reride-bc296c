@@ -98,7 +98,7 @@ function onStopButtonClick() {
 }
 
 function handleWeightNotifications(event) {
-    let value = event.target.value['weight'];
+    let value = event.target.value[characteristicWeight];
     /*   let b = value.getUint8(0).toString();
 
        // now do stuff with the data received !
@@ -110,7 +110,7 @@ function handleWeightNotifications(event) {
 }
 
 function handleAgeNotifications(event) {
-    let value = event.target.value['age'];
+    let value = event.target.value[characteristicAge];
     /*   let b = value.getUint8(0).toString();
 
        // now do stuff with the data received !
