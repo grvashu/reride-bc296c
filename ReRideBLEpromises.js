@@ -62,8 +62,8 @@ function onStartButtonClick() {
             myCharacteristic = characteristic;
             return myCharacteristic.startNotifications().then(_ => {
                 log('> Notifications started');
-                myCharacteristic.addEventListener('characteristicvaluechanged',
-                    handleWeightNotifications);
+                // myCharacteristic.addEventListener('characteristicvaluechanged',
+                //     handleWeightNotifications);
                 myCharacteristic.addEventListener('characteristicvaluechanged',
                     handleAgeNotifications);
             });
